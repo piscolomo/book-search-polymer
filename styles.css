@@ -1,6 +1,7 @@
 body {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
       margin: 0;
+      background-color: #E5E5E5;
       padding: 24px;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -13,7 +14,8 @@ body {
     }
 
     paper-button {
-      margin: 1em;
+      margin: 20px auto 20px auto;
+      display: block;
       width: 10em;
     }
 
@@ -42,7 +44,9 @@ body {
     /* form starting stylings ------------------------------- */
 .group        { 
   position:relative; 
-  margin-bottom:45px; 
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
 }
 input         {
   font-size:18px;

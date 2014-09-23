@@ -1,9 +1,31 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="book-service" attributes="query books npage">
+<polymer-element name="book-service" attributes="query npage">
 
     <template>
+      <style>
+        ul {
+          display: block;
+          margin: 0 auto;
+          padding: 0;
+          width: 100%;
+        }
+        li{
+          width: 650px;
+          display: block;
+          margin: 25px auto 25px auto;
+          background: #fff;
+          padding: 0 20px 20px 20px;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        li img{
+          float: left;
+          margin-right: 15px;
+        }
+      </style>
+      
       <core-ajax
       id="ajax"
       url="http://it-ebooks-api.info/v1/search/{{query}}/page/{{npage}}"
