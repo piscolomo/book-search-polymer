@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IT Ebook Polymer</title>
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/platform/platform.js"></script>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="bower_components/core-icons/core-icons.html">
@@ -79,6 +79,9 @@
 
     button.addEventListener('click', function(){
       t.counter += 10; 
+      $('html, body').animate({
+        scrollTop: $("body").offset().top
+      }, 1000);
     });
 
   </script>
