@@ -1,0 +1,51 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="book-service" attributes="query books">
+
+    <template>
+      <core-ajax
+      id="ajax"
+      url="http://it-ebooks-api.info/v1/search/{{query}}"
+      handleAs="json"
+      on-core-response="{{handleResponse}}"></core-ajax>
+
+      <ul>
+        <template repeat="{{book in books}}">
+          <li>
+          <h2>Prueba</h2>
+            <h3>{{book.Title}}</h3>
+            <img src="{{book.Image}}">
+            <p>{{book.Description}}</p>
+          </li>
+        </template>
+      </ul>
+
+    </template>
+
+    <script>
+      Polymer('book-service', {
+        query: null,
+      
+        observe: {
+          query: 'search'
+        },
+
+        search: function(){
+          this.$.ajax.go();
+        },
+
+        handleResponse: function(){
+          var result = this.$.ajax.response;
+          if (result && result.Books) {
+            this.books = result.Books;
+          } else {
+            this.books = [];
+          }
+          console.log(this.books);
+        }        
+
+      });
+    </script>
+
+</polymer-element>

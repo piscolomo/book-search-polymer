@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IT Ebook Polymer</title>
     <script type="text/javascript" src="bower_components/platform/platform.js"></script>
-    <link rel="import" href="book-search.html">
+    <link rel="import" href="book-service.html">
     <style>
 
     </style>
@@ -12,17 +12,12 @@
   <body>
 
     <template id="my-template" is="auto-binding">
+      
       <input type="text" placeholder="Type a track to search" id="input">
-      <book-search id="search" query="{{queryTerm}}"/>
-      <ul>
-        <template repeat="{{$.search.result}}">
-          <li>
-            <h3>{{Title}}</h3>
-            <img src="{{Image}}">
-            <p>{{Description}}</p>
-          </li>
-        </template>
-      </ul>
+      
+      <book-service id="search" query="{{queryTerm}}"/>
+
+      
     </template>
     <script>
     var t = document.querySelector('#my-template');
