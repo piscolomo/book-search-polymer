@@ -1,19 +1,18 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="book-service" attributes="query books">
+<polymer-element name="book-service" attributes="query books npage">
 
     <template>
       <core-ajax
       id="ajax"
-      url="http://it-ebooks-api.info/v1/search/{{query}}"
+      url="http://it-ebooks-api.info/v1/search/{{query}}/page/{{npage}}"
       handleAs="json"
       on-core-response="{{handleResponse}}"></core-ajax>
 
       <ul>
         <template repeat="{{book in books}}">
           <li>
-          <h2>Prueba</h2>
             <h3>{{book.Title}}</h3>
             <img src="{{book.Image}}">
             <p>{{book.Description}}</p>
@@ -26,9 +25,15 @@
     <script>
       Polymer('book-service', {
         query: null,
+        npage: 1,
+
+        ready: function() {
+          this.books = [];
+        },
       
         observe: {
-          query: 'search'
+          query: 'search',
+          npage: 'search'
         },
 
         search: function(){
@@ -39,11 +44,10 @@
           var result = this.$.ajax.response;
           if (result && result.Books) {
             this.books = result.Books;
-          } else {
+          } else{
             this.books = [];
           }
-          console.log(this.books);
-        }        
+        }
 
       });
     </script>

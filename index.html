@@ -1,38 +1,86 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IT Ebook Polymer</title>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="bower_components/core-icons/core-icons.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
     <link rel="import" href="book-service.html">
     <style>
+      body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      margin: 0;
+      padding: 24px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
 
+    paper-button {
+      margin: 1em;
+      width: 10em;
+    }
+
+    paper-button.colored {
+      color: #4285f4;
+      fill: #4285f4;
+    }
+
+    paper-button[raisedButton].colored {
+      background: #4285f4;
+      color: #fff;
+    }
+
+    paper-button[raisedButton].colored #ripple,
+    paper-button[raisedButton].colored::shadow #ripple {
+      color: #2a56c6;
+    }
+
+    paper-button[raisedButton].colored #focusBg,
+    paper-button[raisedButton].colored::shadow #focusBg {
+      background: #3367d6;
+    }
     </style>
   </head>
-  <body>
+
+  <body unresolved>
+
+
 
     <template id="my-template" is="auto-binding">
-      
       <input type="text" placeholder="Type a track to search" id="input">
-      
-      <book-service id="search" query="{{queryTerm}}"/>
-
-      
+      <book-service id="search" query="{{queryTerm}}" npage="{{counter}}"/>
     </template>
+
+    <paper-button raisedButton class="colored" label="colored">Load more</paper-button>
+
     <script>
     var t = document.querySelector('#my-template');
 
+    var button = document.querySelector('paper-button');
+
     t.addEventListener('template-bound', function() {
-
-      var spotifySearch = document.querySelector('book-search'); 
-
       var input = document.querySelector('input');
-
       input.addEventListener('keyup', function(e) {
         t.queryTerm = this.value;
+        t.counter = 1;
       }, false);
-
     });
+
+    button.addEventListener('click', function(){
+      t.counter += 10; 
+    });
+
   </script>
 
   </body>
