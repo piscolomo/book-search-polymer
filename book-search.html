@@ -1,0 +1,63 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="book-search" attributes="query result">
+
+    <script>
+
+      Polymer('book-search', {
+        query: null,
+      
+        observe: {
+          query: 'search'
+        },
+
+        _previousRequest: null,
+
+        search: function() {
+          var that = this;
+
+          if (this.query) {
+
+            // cancel previous pending request, if any
+            if (this._previousRequest && this._previousRequest.readystate !== 4) {
+                this._previousRequest.abort();
+            }
+
+            var req = new XMLHttpRequest();
+
+            this._previousRequest = req;
+
+            req.open('GET', 'http://it-ebooks-api.info/v1/search/' + this.query ,
+              true);
+
+            req.onreadystatechange = function() {
+              if (req.readyState === 4) {
+                var data = null;
+                try {
+                  data = req.responseText ? JSON.parse(req.responseText) : '';
+                } catch (e) {}
+
+                if (req.status === 200) {
+                  that.gotResult(data);
+                }
+              }
+            };
+
+            req.send(null);
+          }
+        },
+
+        gotResult: function(result) {
+          window.prueba = result;
+          if (result && result.Books) {
+            this.result = result.Books;
+          } else {
+            this.result = [];
+          }
+          this.fire('result', {value: this.result });
+        }
+      });
+
+    </script>
+
+</polymer-element>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IT Ebook Polymer</title>
+    <script type="text/javascript" src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="book-search.html">
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <template id="my-template" is="auto-binding">
+      <input type="text" placeholder="Type a track to search" id="input">
+      <book-search id="search" query="{{queryTerm}}"/>
+      <ul>
+        <template repeat="{{$.search.result}}">
+          <li>
+            <h3>{{Title}}</h3>
+            <img src="{{Image}}">
+            <p>{{Description}}</p>
+          </li>
+        </template>
+      </ul>
+    </template>
+    <script>
+    var t = document.querySelector('#my-template');
+
+    t.addEventListener('template-bound', function() {
+
+      var spotifySearch = document.querySelector('book-search'); 
+
+      var input = document.querySelector('input');
+
+      input.addEventListener('keyup', function(e) {
+        t.queryTerm = this.value;
+      }, false);
+
+    });
+  </script>
+
+  </body>
+</html>
