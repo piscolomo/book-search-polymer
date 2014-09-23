@@ -1,5 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+<link href="bower_components/paper-fab/paper-fab.html" rel="import">
 
 <polymer-element name="book-service" attributes="query npage">
 
@@ -24,6 +25,11 @@
           float: left;
           margin-right: 15px;
         }
+
+        paper-fab.green {
+          background: #259b24;
+          color: #fff;
+        }
       </style>
       
       <core-ajax
@@ -38,6 +44,7 @@
             <h3>{{book.Title}}</h3>
             <img src="{{book.Image}}">
             <p>{{book.Description}}</p>
+            <paper-fab class="green" icon="arrow-forward" onclick="toggleDialog('paper-dialog-transition-bottom')"></paper-fab>
           </li>
         </template>
       </ul>
@@ -51,6 +58,10 @@
 
         ready: function() {
           this.books = [];
+        },
+
+        getlinkdownload: function(){
+          alert("TOMA");
         },
       
         observe: {
