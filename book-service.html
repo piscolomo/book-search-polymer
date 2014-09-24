@@ -98,14 +98,16 @@
         },
 
         handleResponse: function(){
+          var button = document.querySelector('paper-button');
           this.result = this.$.ajax.response;
+          this.$.toast.show();
+
           if (this.result && this.result.Books) {
             this.books = this.result.Books;
-            this.$.toast.show();
+            button.label="Load More Books";
           } else{
             this.books = [];
           }
-          console.log(this.books);
         }
 
       });
