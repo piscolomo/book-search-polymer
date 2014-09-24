@@ -34,12 +34,8 @@
       query: null,
       npage: 1,
 
-      ready: function() {
-        this.books = [
-          {Title: "Prueba 1"},
-          {Title: "Prueba 2"},
-          {Title: "Prueba 3"}
-        ];
+      created: function() {
+        this.books = [];
       },
 
       getlinkdownload: function(event, detail, sender){         
