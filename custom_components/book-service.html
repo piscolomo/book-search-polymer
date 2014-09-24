@@ -22,7 +22,7 @@
           <h3>{{book.Title}}</h3>
           <img src="{{book.Image}}">
           <p>{{book.Description}}</p>
-          <paper-fab class="green" data-id="{{book.ID}}" icon="arrow-forward" on-click="{{getlinkdownload}}"></paper-fab>
+          <paper-fab class="green" icon="arrow-forward" on-click="{{getlinkdownload}}"></paper-fab>
         </li>
       </template>
     </ul>
@@ -40,7 +40,7 @@
 
       getlinkdownload: function(event, detail, sender){         
         var bookdialog = document.querySelector('book-dialog');
-        bookdialog.rundialog(sender.getAttribute("data-id"));
+        bookdialog.rundialog(event.target.templateInstance.model.book.ID);
       },
 
       observe: {
