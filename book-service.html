@@ -1,8 +1,9 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-ajax/core-ajax.html">
-<link href="bower_components/paper-fab/paper-fab.html" rel="import">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
-<polymer-element name="book-service" attributes="query npage">
+<polymer-element name="book-service" attributes="query npage books">
 
     <template>
       <style>
@@ -30,6 +31,11 @@
           background: #259b24;
           color: #fff;
         }
+
+        paper-toast{
+          height: 30px;
+          top: 12px !important;
+        }
       </style>
       
       <core-ajax
@@ -37,6 +43,8 @@
       url="http://it-ebooks-api.info/v1/search/{{query}}/page/{{npage}}"
       handleAs="json"
       on-core-response="{{handleResponse}}"></core-ajax>
+
+      <paper-toast id="toast" text="We found {{result.Total}} books about {{query}}"></paper-toast>
 
       <ul>
         <template repeat="{{book in books}}">
@@ -75,9 +83,10 @@
         },
 
         handleResponse: function(){
-          var result = this.$.ajax.response;
-          if (result && result.Books) {
-            this.books = result.Books;
+          this.result = this.$.ajax.response;
+          if (this.result && this.result.Books) {
+            this.books = this.result.Books;
+            this.$.toast.show();
           } else{
             this.books = [];
           }

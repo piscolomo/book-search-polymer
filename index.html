@@ -19,14 +19,14 @@
 
     <template id="my-template" is="auto-binding">
       <div class="group">      
-        <input type="text" placeholder="Search a book..." id="input" autofocus>
+        <input type="text" placeholder="Write a word to find a book..." id="input" autofocus>
         <span class="highlight"></span>
         <span class="bar"></span>
       </div>
-      <book-service id="search" query="{{queryTerm}}" npage="{{counter}}"/>
+      <book-service id="search" query="{{queryTerm}}" npage="{{counter}}" books="{{books}}"/>
     </template>
 
-    <paper-button raisedButton class="colored" label="colored">Load more</paper-button>
+    <paper-button raisedButton class="colored" label="colored">Search books</paper-button>
 
     <book-dialog></book-dialog>
 
