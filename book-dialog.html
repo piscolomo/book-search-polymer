@@ -1,6 +1,8 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/paper-dialog/paper-dialog-transition.html">
 <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="bower_components/core-transition/core-transition-css.html">
+<link rel="import" href="bower_components/core-overlay/core-overlay.html">
 
 <polymer-element name="book-dialog">
   <template>
@@ -67,7 +69,7 @@
       handleAs="json"
       on-core-response="{{handleResponse}}"></core-ajax>
 	
-  	<paper-dialog id="dialog" heading="" transition="paper-dialog-transition-bottom">
+  	<paper-dialog id="dialog" heading="" backdrop="true" transition="paper-dialog-transition-bottom">
   	  <h2>{{book.Title}}</h2>
       <img src="{{book.Image}}">
       <ul>
