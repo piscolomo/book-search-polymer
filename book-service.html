@@ -3,7 +3,7 @@
 <link rel="import" href="bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
-<polymer-element name="book-service" attributes="query npage books">
+<polymer-element name="book-service" attributes="query npage">
 
     <template>
       <style>
@@ -21,6 +21,18 @@
           padding: 0 20px 20px 20px;
           border-radius: 8px;
           overflow: hidden;
+          position: relative;
+        }
+        @media (max-width: 550px){
+          li{
+            border-radius: 0 !important;
+            padding-bottom: 80px;
+          }
+          li img{
+            float: none !important;
+            margin: 10px auto !important;
+            display: block;
+          }
         }
         li img{
           float: left;
@@ -30,6 +42,9 @@
         paper-fab.green {
           background: #259b24;
           color: #fff;
+          right: 20px;
+          bottom: 20px;
+          position: absolute;
         }
 
         paper-toast{
