@@ -135,9 +135,3 @@ input:focus ~ .highlight {
   from { background:#5264AE; }
   to  { width:0; background:transparent; }
 }
-
-/* DIALOGS ================ */
-paper-dialog {
-      width: 50%;
-      min-width: 430px;
-    }

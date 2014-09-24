@@ -5,7 +5,60 @@
 <polymer-element name="book-dialog">
   <template>
     <style>
+      paper-dialog {
+        width: 50%;
+        min-width: 430px;
+      }
 
+      .downloadbtn {
+        margin: 20px auto 20px auto;
+        display: block;
+        width: 150px;
+        background: #4285f4;
+        color: #fff;
+        fill: #4285f4;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 3px;
+        font-size: 19px !important;
+        padding: 6px 8px;
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      }
+
+      @media (max-width: 600px){
+        paper-dialog {
+          width: 95%;
+          min-width: initial;
+          left: 3% !important;
+        }
+      }
+
+      img{
+        float: left;
+        margin: 0 15px 15px 0;
+      }
+
+      h2{
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 25px !important;
+        font-weight: bold !important;
+      }
+      p{
+        text-align: justify;
+      }
+      ul li{
+        display: inline-block;
+        height: auto;
+        max-width: 370px;
+        padding: 5px 8px 5px 8px;
+        border-radius: 12px;
+        background: #DFDFDF;
+        text-align: center;
+        color: #535353;
+        margin: 0 5px 12px 0;
+      }
     </style>
 
     <core-ajax
@@ -14,11 +67,19 @@
       handleAs="json"
       on-core-response="{{handleResponse}}"></core-ajax>
 	
-	<paper-dialog id="dialog" heading="Dialog" transition="paper-dialog-transition-bottom">
-	  <h2>{{Title}}</h2>
-      <paper-button label="More Info..." dismissive></paper-button>
-      <paper-button label="Decline" affirmative></paper-button>
-      <paper-button label="Accept" affirmative autofocus></paper-button>
+  	<paper-dialog id="dialog" heading="" transition="paper-dialog-transition-bottom">
+  	  <h2>{{book.Title}}</h2>
+      <img src="{{book.Image}}">
+      <ul>
+        <li>Author: {{book.Author}}</li>
+        <li>ISBN: {{book.ISBN}}</li>
+        <li>Year: {{book.Year}}</li>
+        <li>Pages: {{book.Page}}</li>
+        <li>Publisher: {{book.Publisher}}</li>
+      </ul>
+      <p>{{book.Description}}</p>
+      <a href="{{book.Download}}" target="_blank" class="downloadbtn">Download</a>
+      <paper-button label="Close" affirmative></paper-button>
     </paper-dialog>
 
   </template>
@@ -30,9 +91,7 @@
       this.$.ajax.go();
     },
     handleResponse: function(){
-      var result = this.$.ajax.response;
-      console.log(result);
-      this.Title = result.Title;
+      this.book = this.$.ajax.response;
       var dialog = this.$.dialog;
       dialog.toggle();
     }
