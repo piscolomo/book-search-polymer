@@ -1,0 +1,54 @@
+paper-dialog {
+        width: 50%;
+        min-width: 430px;
+      }
+
+      .downloadbtn {
+        margin: 20px auto 20px auto;
+        display: block;
+        width: 150px;
+        background: #4285f4;
+        color: #fff;
+        fill: #4285f4;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 3px;
+        font-size: 19px !important;
+        padding: 6px 8px;
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      }
+
+      @media (max-width: 600px){
+        paper-dialog {
+          width: 95%;
+          min-width: initial;
+          left: 3% !important;
+        }
+      }
+
+      img{
+        float: left;
+        margin: 0 15px 15px 0;
+      }
+
+      h2{
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 25px !important;
+        font-weight: bold !important;
+      }
+      p{
+        text-align: justify;
+      }
+      ul li{
+        display: inline-block;
+        height: auto;
+        max-width: 370px;
+        padding: 5px 8px 5px 8px;
+        border-radius: 12px;
+        background: #DFDFDF;
+        text-align: center;
+        color: #535353;
+        margin: 0 5px 12px 0;
+      }

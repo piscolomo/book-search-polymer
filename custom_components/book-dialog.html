@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog-transition.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<polymer-element name="book-dialog">
+
+  <template>
+    <link rel="stylesheet" href="book-dialog.css">
+
+    <core-ajax
+      id="ajax"
+      url="http://it-ebooks-api.info/v1/book/{{id}}"
+      handleAs="json"
+      on-core-response="{{handleResponse}}"></core-ajax>
+	
+  	<paper-dialog id="dialog" heading="" backdrop="true" transition="paper-dialog-transition-bottom">
+  	  <h2>{{book.Title}}</h2>
+      <img src="{{book.Image}}">
+      <ul>
+        <li>Author: {{book.Author}}</li>
+        <li>ISBN: {{book.ISBN}}</li>
+        <li>Year: {{book.Year}}</li>
+        <li>Pages: {{book.Page}}</li>
+        <li>Publisher: {{book.Publisher}}</li>
+      </ul>
+      <p>{{book.Description}}</p>
+      <a href="{{book.Download}}" target="_blank" class="downloadbtn">Download</a>
+      <paper-button label="Close" affirmative></paper-button>
+    </paper-dialog>
+
+  </template>
+
+  <script>
+    Polymer({
+    	rundialog: function(id){
+    	  this.id = id;
+        this.$.ajax.go();
+      },
+      handleResponse: function(){
+        this.book = this.$.ajax.response;
+        this.$.dialog.toggle();
+      }
+    });
+  </script>
+
+</polymer-element>

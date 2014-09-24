@@ -1,0 +1,44 @@
+ul {
+          display: block;
+          margin: 0 auto;
+          padding: 0;
+          width: 100%;
+        }
+        li{
+          max-width: 650px;
+          display: block;
+          margin: 25px auto 25px auto;
+          background: #fff;
+          padding: 0 20px 20px 20px;
+          border-radius: 8px;
+          overflow: hidden;
+          position: relative;
+        }
+        @media (max-width: 550px){
+          li{
+            border-radius: 0 !important;
+            padding-bottom: 80px;
+          }
+          li img{
+            float: none !important;
+            margin: 10px auto !important;
+            display: block;
+          }
+        }
+        li img{
+          float: left;
+          margin-right: 15px;
+        }
+
+        paper-fab.green {
+          background: #259b24;
+          color: #fff;
+          right: 20px;
+          bottom: 20px;
+          position: absolute;
+        }
+
+        paper-toast{
+          height: 30px;
+          top: 12px !important;
+        }

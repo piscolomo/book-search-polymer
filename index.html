@@ -11,19 +11,19 @@
     <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="bower_components/core-icons/core-icons.html">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="book-service.html">
-    <link rel="import" href="book-dialog.html">
+    <link rel="import" href="custom_components/book-service.html">
+    <link rel="import" href="custom_components/book-dialog.html">
   </head>
 
   <body unresolved>
 
     <template id="my-template" is="auto-binding">
       <div class="group">      
-        <input type="text" placeholder="Write a word to find a book..." id="input" autofocus>
+        <input type="text" placeholder="Write a word to find a book..." autofocus>
         <span class="highlight"></span>
         <span class="bar"></span>
       </div>
-      <book-service id="search" query="{{queryTerm}}" npage="{{counter}}"/>
+      <book-service query="{{queryTerm}}" npage="{{counter}}"/>
     </template>
 
     <paper-button raisedButton class="colored" label="colored">Search books</paper-button>
