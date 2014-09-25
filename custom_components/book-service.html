@@ -18,11 +18,11 @@
     <paper-toast id="error" text="Apparently you have exceeded the limit of requests, try later =("></paper-toast>
 
     <ul>
-      <template repeat="{{book in books}}">
+      <template repeat="{{books}}">
         <li>
-          <h3>{{book.Title}}</h3>
-          <img src="{{book.Image}}">
-          <p>{{book.Description}}</p>
+          <h3>{{Title}}</h3>
+          <img src="{{Image}}">
+          <p>{{Description}}</p>
           <paper-fab class="green" icon="arrow-forward" on-click="{{getlinkdownload}}"></paper-fab>
         </li>
       </template>
