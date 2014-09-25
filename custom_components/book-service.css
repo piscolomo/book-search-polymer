@@ -42,3 +42,8 @@ ul {
           height: 30px;
           top: 12px !important;
         }
+
+        paper-toast#error{
+          background: #F7D5D5 !important;
+          color: #6c6c6c !important;
+        }

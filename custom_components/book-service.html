@@ -15,6 +15,7 @@
     on-core-response="{{handleResponse}}"></core-ajax>
 
     <paper-toast id="toast" text="We found {{result.Total}} books about {{query}}"></paper-toast>
+    <paper-toast id="error" text="Apparently you have exceeded the requests from API, try later =("></paper-toast>
 
     <ul>
       <template repeat="{{book in books}}">
@@ -55,6 +56,12 @@
       handleResponse: function(){
         var button = document.querySelector('paper-button');
         this.result = this.$.ajax.response;
+        
+        if (this.result.Error && !this.result.Books){
+          this.$.error.show();
+          return;
+        }
+
         this.$.toast.show();
 
         if (this.result && this.result.Books) {
@@ -63,6 +70,7 @@
         } else{
           this.books = [];
         }
+
       }
 
     });
