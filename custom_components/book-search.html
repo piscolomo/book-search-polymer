@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="book-service.html">
 
 <polymer-element name="book-search">
 
@@ -12,9 +13,9 @@
       <span class="highlight"></span>
       <span class="bar"></span>
     </div>
-    <book-service id="service" query="{{queryTerm}}"/></book-service>
+    <book-service id="service" query="{{queryTerm}}" books="{{books}}"/></book-service>
 
-    <paper-button raisedButton class="colored" label="colored" on-click="{{nextBooks}}">Search books</paper-button>
+    <paper-button raisedButton class="colored" label="colored" on-click="{{nextBooks}}" hidden?="{{!books.length}}">Load more books</paper-button>
 
   </template>
 

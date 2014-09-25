@@ -9,41 +9,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/platform/platform.js"></script>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
-    <link rel="import" href="custom_components/book-service.html">
-    <link rel="import" href="custom_components/book-dialog.html">
     <link rel="import" href="custom_components/book-search.html">
   </head>
 
   <body unresolved>
-
-    <template id="my-template" is="auto-binding">
-      <book-search></book-search>
-    </template>
-
-    <book-dialog></book-dialog>
-
-    <script>
-    var t = document.querySelector('#my-template');
-    //var button = document.querySelector('paper-button');
-
-    t.addEventListener('template-bound', function() {
-      /*var input = document.querySelector('input');
-      input.addEventListener('keyup', function(e) {
-        if (this.value!=""){
-          t.queryTerm = this.value;
-          t.counter = 1;
-        }
-      });*/
-    });
-
-    /*button.addEventListener('click', function(){
-      t.counter += 10; 
-      $('html, body').animate({
-        scrollTop: $("body").offset().top
-      }, 1000);
-    });*/
-
-  </script>
-
+    <book-search></book-search>
   </body>
+  
 </html>
