@@ -1,24 +1,30 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="book-search.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <polymer-element name="book-search">
 
   <template>
+    <link rel="stylesheet" href="book-search.css">
+
     <div class="group">      
       <input type="text" placeholder="Write a word to find a book..." value="{{queryTerm}}" autofocus>
       <span class="highlight"></span>
       <span class="bar"></span>
     </div>
-    <book-service query="{{queryTerm}}" npage="{{counter}}"/>
+    <book-service id="service" query="{{queryTerm}}"/></book-service>
+
+    <paper-button raisedButton class="colored" label="colored" on-click="{{nextBooks}}">Search books</paper-button>
+
   </template>
 
   <script>
     Polymer({
-      publish: {
-        queryTerm: ""
-      },
-      queryTermChanged: function(){
-        
+      nextBooks: function(){
+        this.$.service.npage += 10; 
+        $('html, body').animate({
+          scrollTop: $("body").offset().top
+        }, 1000);
       }
     });
   </script>

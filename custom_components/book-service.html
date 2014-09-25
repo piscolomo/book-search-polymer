@@ -7,7 +7,7 @@
 
   <template>
     <link rel="stylesheet" href="book-service.css">
-    
+    <!-- url="http://it-ebooks-api.info/v1/search/{{query}}/page/{{npage}}" -->
     <core-ajax
     id="ajax"
     url="http://it-ebooks-api.info/v1/search/{{query}}/page/{{npage}}"
@@ -45,20 +45,28 @@
       },
 
       observe: {
-        query: 'search',
         npage: 'search'
       },
 
+      queryChanged: function(oldvalue, newvalue){
+        if (newvalue!=""){
+          if (this.npage == 1){
+            this.search();
+          }else{
+            this.npage = 1;
+          }
+        }
+      },
+
       search: function(){
-        console.log("change");
         this.$.ajax.go();
       },
 
       handleResponse: function(){
-        var button = document.querySelector('paper-button');
         this.result = this.$.ajax.response;
         
-        if (this.result.Error && !this.result.Books){
+        //show error toast if exceeded the limit of requests
+        if (this.result.Error && !this.result.Total){
           this.$.error.show();
           return;
         }
@@ -67,7 +75,6 @@
 
         if (this.result && this.result.Books) {
           this.books = this.result.Books;
-          button.label="Load More Books";
         } else{
           this.books = [];
         }

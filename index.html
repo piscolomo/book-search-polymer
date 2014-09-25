@@ -9,8 +9,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/platform/platform.js"></script>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
-    <link rel="import" href="bower_components/core-icons/core-icons.html">
-    <link rel="import" href="bower_components/paper-button/paper-button.html">
     <link rel="import" href="custom_components/book-service.html">
     <link rel="import" href="custom_components/book-dialog.html">
     <link rel="import" href="custom_components/book-search.html">
@@ -22,13 +20,11 @@
       <book-search></book-search>
     </template>
 
-    <paper-button raisedButton class="colored" label="colored">Search books</paper-button>
-
     <book-dialog></book-dialog>
 
     <script>
     var t = document.querySelector('#my-template');
-    var button = document.querySelector('paper-button');
+    //var button = document.querySelector('paper-button');
 
     t.addEventListener('template-bound', function() {
       /*var input = document.querySelector('input');
@@ -40,12 +36,12 @@
       });*/
     });
 
-    button.addEventListener('click', function(){
+    /*button.addEventListener('click', function(){
       t.counter += 10; 
       $('html, body').animate({
         scrollTop: $("body").offset().top
       }, 1000);
-    });
+    });*/
 
   </script>
 
