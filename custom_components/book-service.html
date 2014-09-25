@@ -15,7 +15,7 @@
     on-core-response="{{handleResponse}}"></core-ajax>
 
     <paper-toast id="toast" text="We found {{result.Total}} books about {{query}}"></paper-toast>
-    <paper-toast id="error" text="Apparently you have exceeded the requests from API, try later =("></paper-toast>
+    <paper-toast id="error" text="Apparently you have exceeded the limit of requests, try later =("></paper-toast>
 
     <ul>
       <template repeat="{{book in books}}">
