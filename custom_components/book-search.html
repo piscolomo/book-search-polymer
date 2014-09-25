@@ -1,0 +1,26 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="book-search.html">
+
+<polymer-element name="book-search">
+
+  <template>
+    <div class="group">      
+      <input type="text" placeholder="Write a word to find a book..." value="{{queryTerm}}" autofocus>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+    <book-service query="{{queryTerm}}" npage="{{counter}}"/>
+  </template>
+
+  <script>
+    Polymer({
+      publish: {
+        queryTerm: ""
+      },
+      queryTermChanged: function(){
+        
+      }
+    });
+  </script>
+
+</polymer-element>
