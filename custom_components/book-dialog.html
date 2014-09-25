@@ -14,17 +14,19 @@
       on-core-response="{{handleResponse}}"></core-ajax>
 	
   	<paper-dialog id="dialog" heading="" backdrop="true" transition="paper-dialog-transition-bottom">
-  	  <h2>{{book.Title}}</h2>
-      <img src="{{book.Image}}">
-      <ul>
-        <li>Author: {{book.Author}}</li>
-        <li>ISBN: {{book.ISBN}}</li>
-        <li>Year: {{book.Year}}</li>
-        <li>Pages: {{book.Page}}</li>
-        <li>Publisher: {{book.Publisher}}</li>
-      </ul>
-      <p>{{book.Description}}</p>
-      <a href="{{book.Download}}" target="_blank" class="downloadbtn">Download</a>
+      <template bind="{{book}}">
+        <h2>{{Title}}</h2>
+        <img src="{{Image}}">
+        <ul>
+          <li>Author: {{Author}}</li>
+          <li>ISBN: {{ISBN}}</li>
+          <li>Year: {{Year}}</li>
+          <li>Pages: {{Page}}</li>
+          <li>Publisher: {{Publisher}}</li>
+        </ul>
+        <p>{{Description}}</p>
+        <a href="{{Download}}" target="_blank" class="downloadbtn">Download</a>
+      </template>
       <paper-button label="Close" affirmative></paper-button>
     </paper-dialog>
 
